@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Answer</title>
+    <link rel="stylesheet" href="..\static\answer.css">
 </head>
 <body>
-    <p>Your answer: {{ ans }}</p>
+    <div id="path_list">
+        <h1>Маршрут построен</h1>
+        <h2>Время пути: {{ total_time }}</h2>
+        <ul>
+        {% for item in items %}
+
+        <li>{{ item.text }}</li>
+
+        {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

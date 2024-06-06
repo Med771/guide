@@ -11,7 +11,7 @@ with open("data\\path_time.json", "r") as file:
 
 
 def dijkstra(start, finish, time_path):
-    queue = deque([(0, start, [(0, 0)])])
+    queue = deque([(0, start, [(0, start)])])
 
     answer, result_path = 0, []
 

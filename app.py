@@ -2,7 +2,7 @@ import json
 
 from flask import Flask, render_template, request
 
-from algorithm.dijkstra_algorithm import dijkstra
+from algorithm.create_path import create_response_path
 
 app = Flask(__name__)
 
@@ -10,11 +10,6 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     return render_template("index.html")
-
-
-@app.route('/about')
-def about():
-    return render_template("form.html")
 
 
 @app.route("/answer", methods=['POST'])
@@ -26,16 +21,9 @@ def answer():
 
     time_ = int(path_time[:2]) * 3600 + int(path_time[3:]) * 60
 
-    answer, path = dijkstra(start=start, finish=finish, time_path=int(time_))
+    response_path, response_time = create_response_path(start, finish, time_)
 
-    with open("data\\points_name.json", "r", encoding="utf-8") as f:
-        name_points = json.load(f)
-
-    res_path = [name_points[v[1]] + v[1] for v in path[1:]]
-
-    print(*res_path, sep="\n")
-
-    return render_template("answer.html", ans=answer)
+    return render_template("answer.html", items=response_path, total_time=response_time)
 
 
 if __name__ == '__main__':
