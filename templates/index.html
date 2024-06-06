@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Виртуальный гид</title>
+    <link rel="stylesheet" href="..\static\style.css">
+</head>
+<body>
+    <h1>Добро пожаловать</h1>
+    <form method="post" action="/answer">
+        <label for="start">Укажите пожалуйста начальную точку</label>
+        <input type="text" name="start" placeholder="Введите адрес">
+
+        <label for="end">Укажите завершающую точку</label>
+        <input type="text" name="end" placeholder="Введите адрес">
+
+        <label for="places">Какие места вы бы хотели посетить</label>
+        <ul id="places" multiple>
+            <li><input type="checkbox" name="cafes">Кафе и рестораны</li>
+            <li><input type="checkbox" name="sights">Достопримечательности</li>
+            <li><input type="checkbox" name="museums">Музеи</li>
+            <li><input type="checkbox" name="theaters">Театры</li>
+            <li><input type="checkbox" name="parks">Парки и скверы</li>
+        </ul>
+
+        <label for="time">Укажите примерное время прогулки</label>
+        <input type="text" name="time" placeholder="Введите в формате 02:47">
+
+        <button type="submit" value="submit">Завершить создание</button>
+    </form>
+</body>
+</html>
