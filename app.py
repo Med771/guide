@@ -1,8 +1,6 @@
-import json
-
 from flask import Flask, render_template, request
-
-from algorithm.create_path import create_response_path
+from algorithm.building_path import building_path
+from time import time
 
 app = Flask(__name__)
 
@@ -16,14 +14,20 @@ def hello_world():
 def answer():
     values = ("start", "end", "time", "cafes", "sights", "museums", "theaters", "parks")
 
-    start, finish, path_time = (request.form[value] for value in values[:3])
+    start, end, path_time = (request.form[value] for value in values[:3])
     cafes, sights, museums, theaters, parks = (request.form.get(value) for value in values[3:])
 
     time_ = int(path_time[:2]) * 3600 + int(path_time[3:]) * 60
 
-    response_path, response_time = create_response_path(start, finish, time_)
+    start_time = time()
 
-    return render_template("answer.html", items=response_path, total_time=response_time)
+    answer_path = building_path(start_point=start, end_point=end, time_path=time_)
+
+    end_time = time()
+
+    print(end_time - start_time)
+
+    return render_template("answer.html", total_path=answer_path)
 
 
 if __name__ == '__main__':
