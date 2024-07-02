@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Виртуальный гид</title>
-    <link rel="stylesheet" href="..\static\style.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
 </head>
 <body>
-    <h1>Добро пожаловать</h1>
-    <form method="post" action="/answer">
-        <label for="start">Укажите пожалуйста начальную точку</label>
-        <input type="text" name="start" placeholder="Введите адрес">
+    <div class="wrapper">
+        <h1>Добро пожаловать</h1>
+        <form method="post" action="/answer">
+            <div class="form-group">
+                <label for="start">Укажите пожалуйста начальную точку</label>
+                <div id="start-map" class="map"></div>
+                <input type="hidden" id="start" name="start">
+            </div>
 
-        <label for="end">Укажите завершающую точку</label>
-        <input type="text" name="end" placeholder="Введите адрес">
+            <div class="form-group">
+                <label for="end">Укажите завершающую точку</label>
+                <div id="end-map" class="map"></div>
+                <input type="hidden" id="end" name="end">
+            </div>
 
-        <label for="places">Какие места вы бы хотели посетить</label>
-        <ul id="places" multiple>
-            <li><input type="checkbox" name="cafes">Кафе и рестораны</li>
-            <li><input type="checkbox" name="sights">Достопримечательности</li>
-            <li><input type="checkbox" name="museums">Музеи</li>
-            <li><input type="checkbox" name="theaters">Театры</li>
-            <li><input type="checkbox" name="parks">Парки и скверы</li>
-        </ul>
+            <div class="form-group">
+                <label for="time">Укажите примерное время прогулки</label>
+                <input type="text" name="time" placeholder="Введите в формате 02:47" required>
+            </div>
 
-        <label for="time">Укажите примерное время прогулки</label>
-        <input type="text" name="time" placeholder="Введите в формате 02:47">
+            <button type="submit" value="submit">Завершить создание</button>
+        </form>
+    </div>
 
-        <button type="submit" value="submit">Завершить создание</button>
-    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="/static/js/map.js"></script>
 </body>
 </html>
