@@ -4,11 +4,9 @@ from time import time
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def hello_world():
     return render_template("index.html")
-
 
 @app.route("/answer", methods=['POST'])
 def answer():
@@ -28,7 +26,6 @@ def answer():
     print(end_time - start_time)
 
     return render_template("answer.html", total_path=answer_path)
-
 
 if __name__ == '__main__':
     app.run()
