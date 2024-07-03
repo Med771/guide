@@ -118,8 +118,6 @@ document.addEventListener("DOMContentLoaded", function() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(endMap);
 
-    var startMarker, endMarker;
-
     // Иконки маркеров
     var blueIcon = new L.Icon({
         iconUrl: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',

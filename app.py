@@ -13,7 +13,6 @@ def answer():
     values = ("start", "end", "time", "cafes", "sights", "museums", "theaters", "parks")
 
     start, end, path_time = (request.form[value] for value in values[:3])
-    cafes, sights, museums, theaters, parks = (request.form.get(value) for value in values[3:])
 
     print(start, end)
 
