@@ -15,6 +15,8 @@ def answer():
     start, end, path_time = (request.form[value] for value in values[:3])
     cafes, sights, museums, theaters, parks = (request.form.get(value) for value in values[3:])
 
+    print(start, end)
+
     time_ = int(path_time[:2]) * 3600 + int(path_time[3:]) * 60
 
     start_time = time()

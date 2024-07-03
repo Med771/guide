@@ -143,14 +143,16 @@ document.addEventListener("DOMContentLoaded", function() {
             var point = points[key];
             var marker = L.marker([point.lat, point.lon], { icon: blueIcon }).addTo(map);
 
-            marker.on('click', function(e) {
-                if (selectedMarker) {
-                    selectedMarker.setIcon(blueIcon);
-                }
-                e.target.setIcon(redIcon);
-                selectedMarker = e.target;
-                document.getElementById(inputId).value = key;
-            });
+            marker.on('click', (function(key) {
+                        return function(e) {
+                            if (selectedMarker) {
+                                selectedMarker.setIcon(blueIcon);
+                            }
+                            e.target.setIcon(redIcon);
+                            selectedMarker = e.target;
+                            document.getElementById(inputId).value = key;
+                        }
+                    })(key));
         }
     }
 
