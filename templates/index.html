@@ -33,15 +33,44 @@
 
     <div id="loading" class="loading">
         <div class="spinner"></div>
-        <p>загрузка</p>
+        <p id="loadingText">загрузка</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script src="/static/js/map.js"></script>
     <script>
-        function showLoading() {
-            document.getElementById('loading').style.display = 'flex';
+        const loadingMessages = [
+            "Загрузка...",
+            "Подождите немного...",
+            "Скоро будет готово...",
+            "Загружаем данные...",
+            "Почти готово..."
+        ];
+
+        let intervalId;
+
+        function getRandomMessage() {
+            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+            return loadingMessages[randomIndex];
         }
+
+        function showLoading() {
+            const loadingElement = document.getElementById('loading');
+            const loadingText = document.getElementById('loadingText');
+
+            loadingElement.style.display = 'flex';
+            loadingText.textContent = getRandomMessage();
+
+            intervalId = setInterval(() => {
+                loadingText.textContent = getRandomMessage();
+            }, 5000);
+        }
+
+        window.addEventListener('unload', () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        });
     </script>
 </body>
 </html>
