@@ -33,40 +33,15 @@
 
     <div id="loading" class="loading">
         <div class="spinner"></div>
+        <p>загрузка</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script src="/static/js/map.js"></script>
     <script>
-        const messages = [
-    'Это может занять еще немного времени',
-    'Подождите еще чуть-чуть',
-    'Вот-вот и мы загрузим ваш маршрут',
-    'Осталось капельку подождать',
-    'Терпение и труд все перетрут'
-];
-
-function showLoading() {
-    const loadingDiv = document.getElementById('loading');
-    const messageDiv = loadingDiv.querySelector('.message');
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-
-    messageDiv.textContent = randomMessage;
-    loadingDiv.style.display = 'flex';
-
-    let counter = 0;
-    const intervalId = setInterval(() => {
-        counter++;
-        if (counter >= 5) {
-            clearInterval(intervalId);
-            loadingDiv.style.display = 'none';
-        } else {
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            messageDiv.textContent = randomMessage;
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
         }
-    }, 1000);
-}
-
     </script>
 </body>
 </html>
